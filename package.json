@@ -1,11 +1,11 @@
 {
-  "name": "yakuza",
-  "version": "1.0.7",
+  "name": "lienbcn-yakuza",
+  "version": "1.0.8",
   "description": "Heavyweight scraping framework for mobsters",
   "main": "yakuza.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/Narzerus/yakuza.git"
+    "url": "https://github.com/lienbcn/yakuza.git"
   },
   "scripts": {
     "coverage": "istanbul cover _mocha -- spec",

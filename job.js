@@ -276,6 +276,7 @@ Job.prototype.__retrieveExecutionQueueBlockPromises = function (executionBlock) 
   var finalPromises;
 
   function retrieveTaskSpecPromises (taskSpec) {
+    /* This function has been modified to avoid: RangeError: Maximum call stack size exceeded 
     var currentTask, promises;
 
     currentTask = taskSpec.task;
@@ -288,6 +289,23 @@ Job.prototype.__retrieveExecutionQueueBlockPromises = function (executionBlock) 
     }
 
     return promises;
+    */
+    
+    var promises = [];
+    var currentTask;
+    var oTaskSpec = taskSpec;
+
+    currentTask = oTaskSpec.task;
+    promises.push(currentTask._runningPromise);
+    while(oTaskSpec.next){
+      oTaskSpec = oTaskSpec.next;
+      currentTask = oTaskSpec.task;
+      promises.push(currentTask._runningPromise);
+    }
+
+
+    return promises;
+
   }
 
   finalPromises = [];
